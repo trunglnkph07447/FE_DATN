@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/css/otp.css">
+   
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-step">
+            <div class="line"></div>
+            <span>Step1</span>
+            <span>Step2</span>
+            <span>Step3</span>
+        </div>
+        <form action="" class="form-one">
+            <h1>ĐĂNG NHẬP</h1>
+            <div class="form_text">
+                <p>Vui lòng nhập số điện thoại của anh</p>
+            </div>
+            <div class="input_tel">
+                <input type="tel" placeholder="Ví dụ: 0912.xxx.xxx">
+            </div>
+            <button type="button" id="next-one">Next</button>
+        </form>
+
+        <form action="" class="form-two">
+            <h1>CONTACT</h1>
+            <!-- <input type="email" placeholder="Email">
+            <input type="number" placeholder="SĐT">
+            <button type="button" id="back-one">Back</button>
+            <button  type="button" id="next-two">Next</button> -->
+            
+                <!-- <div class="sendOTP">
+                    <div class="form__message">Kiểm tra SMS để lấy OTP đăng nhập.</div>
+                    <div><span class="sendOTP__resend " role="presentation">Gửi lại OTP</span></div>
+                </div> -->
+            
+            <button type="button" id="back-one">Back</button>
+            <button  type="button" id="next-two">Next</button>
+        </form>
+
+        <form action="" class="form-three">
+            <h1>Submit</h1>
+            <input type="text" placeholder="Họ tên">
+            <input type="text" placeholder="Tên">
+            <button type="button" id="back-two">Back</button>
+            <button>Submit</button>
+        </form>
+
+    </div>
+
+    <script>
+        const nextOne = document.querySelector('#next-one')
+        const nextTwo = document.querySelector('#next-two')
+        const backOne = document.querySelector('#back-one')
+        const backTwo = document.querySelector('#back-two')
+
+        const formOne = document.querySelector('.form-one')
+        const formTwo = document.querySelector('.form-two')
+        const formThree = document.querySelector('.form-three')
+
+        const formLine = document.querySelector('.line')
+
+        nextOne.addEventListener("click", function () {
+            formOne.style.left = "-340px"
+            formTwo.style.left = "0px"
+            formLine.style.width = "200px"
+        })
+
+        nextTwo.addEventListener("click", function () {
+            formTwo.style.left = "-340px"
+            formThree.style.left = "0px"
+            formLine.style.width = "340px"
+        })
+
+        backOne.addEventListener("click", function () {
+            formOne.style.left = "0px"
+            formTwo.style.left = "340px"
+            formLine.style.width = "100px"
+        })
+
+        backTwo.addEventListener("click", function () {
+            formTwo.style.left = "0px"
+            formThree.style.left = "340px"
+            formLine.style.width = "200px"
+        })
+
+    </script>
+</body>
+
+</html>
