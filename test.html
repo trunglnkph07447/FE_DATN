@@ -1,277 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-   
-    
-    <title>Document</title>
-    <style type="text/css">
-    #slider-text{
-  padding-top: 40px;
-  display: block;
-}
-#slider-text .col-md-6{
-  overflow: hidden;
-}
- 
-#slider-text h2 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 30px;
-  letter-spacing: 3px;
-  margin: 30px auto;
-  padding-left: 40px;
-}
-#slider-text h2::after{
-  border-top: 2px solid #c7c7c7;
-  content: "";
-  position: absolute;
-  bottom: 35px;
-  width: 100%;
-  }
- 
-#itemslider h4{
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  margin: 10px auto 3px;
-}
-#itemslider h5{
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  margin: 3px auto 2px;
-}
-#itemslider h6{
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;;
-  font-size: 10px;
-  margin: 2px auto 5px;
-}
-.badge {
-  background: #b20c0c;
-  position: absolute;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  line-height: 31px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  border: 2px solid #FFF;
-  box-shadow: 0 0 0 1px #b20c0c;
-  top: 5px;
-  right: 25%;
-}
-#slider-control img{
-  padding-top: 60%;
-  margin: 0 auto;
-}
-@media screen and (max-width: 992px){
-#slider-control img {
-  padding-top: 70px;
-  margin: 0 auto;
-}
-}
- 
-.carousel-showmanymoveone .carousel-control {
-  width: 4%;
-  background-image: none;
-}
-.carousel-showmanymoveone .carousel-control.left {
-  margin-left: 5px;
-}
-.carousel-showmanymoveone .carousel-control.right {
-  margin-right: 5px;
-}
-.carousel-showmanymoveone .cloneditem-1,
-.carousel-showmanymoveone .cloneditem-2,
-.carousel-showmanymoveone .cloneditem-3,
-.carousel-showmanymoveone .cloneditem-4,
-.carousel-showmanymoveone .cloneditem-5 {
-  display: none;
-}
-@media all and (min-width: 768px) {
-  .carousel-showmanymoveone .carousel-inner > .active.left,
-  .carousel-showmanymoveone .carousel-inner > .prev {
-    left: -50%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .active.right,
-  .carousel-showmanymoveone .carousel-inner > .next {
-    left: 50%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .left,
-  .carousel-showmanymoveone .carousel-inner > .prev.right,
-  .carousel-showmanymoveone .carousel-inner > .active {
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
-    display: block;
-  }
-}
-@media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
-  .carousel-showmanymoveone .carousel-inner > .item.active.right,
-  .carousel-showmanymoveone .carousel-inner > .item.next {
-    -webkit-transform: translate3d(50%, 0, 0);
-    transform: translate3d(50%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.active.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-  .carousel-showmanymoveone .carousel-inner > .item.active {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    left: 0;
-  }
-}
-@media all and (min-width: 992px) {
-  .carousel-showmanymoveone .carousel-inner > .active.left,
-  .carousel-showmanymoveone .carousel-inner > .prev {
-    left: -16.666%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .active.right,
-  .carousel-showmanymoveone .carousel-inner > .next {
-    left: 16.666%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .left,
-  .carousel-showmanymoveone .carousel-inner > .prev.right,
-  .carousel-showmanymoveone .carousel-inner > .active {
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner .cloneditem-2,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-3,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-4,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-5,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-6  {
-    display: block;
-  }
-}
-@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
-  .carousel-showmanymoveone .carousel-inner > .item.active.right,
-  .carousel-showmanymoveone .carousel-inner > .item.next {
-    -webkit-transform: translate3d(16.666%, 0, 0);
-    transform: translate3d(16.666%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.active.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev {
-    -webkit-transform: translate3d(-16.666%, 0, 0);
-    transform: translate3d(-16.666%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-  .carousel-showmanymoveone .carousel-inner > .item.active {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    left: 0;
-  }
-}</style>
-</head>
-<body>
-    <div class="container-fluid">
- 
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-              <div class="carousel-inner">
-       
-                <div class="item active">
-                  <div class="col-xs-12 col-sm-6 col-md-2">
-                    <a href="#"><img src="images/item-1.png" class="img-responsive center-block"></a>
-                    <h4 class="text-center">MAYORAL SUKNJA</h4>
-                    <h5 class="text-center">400.000 VND</h5>
-                  </div>
-                </div>
-       
-                <div class="item">
-                  <div class="col-xs-12 col-sm-6 col-md-2">
-                    <a href="#"><img src="images/item-2.png" class="img-responsive center-block"></a>
-                    <h4 class="text-center">MAYORAL KOŠULJA</h4>
-                    <h5 class="text-center">400.000 VND</h5>
-                  </div>
-                </div>
-       
-                <div class="item">
-                  <div class="col-xs-12 col-sm-6 col-md-2">
-                    <a href="#"><img src="images/item-3.png" class="img-responsive center-block"></a>
-                    <span class="badge">10%</span>
-                    <h4 class="text-center">PANTALONE TERI 2</h4>
-                    <h5 class="text-center">400.000 VND</h5>
-                    <h6 class="text-center">500.000 VND</h6>
-                  </div>
-                </div>
-       
-                <div class="item">
-                  <div class="col-xs-12 col-sm-6 col-md-2">
-                    <a href="#"><img src="images/item-4.png" class="img-responsive center-block"></a>
-                    <h4 class="text-center">CVETNA HALJINA</h4>
-                    <h5 class="text-center">600.000 VND</h5>
-                  </div>
-                </div>
-       
-                <div class="item">
-                  <div class="col-xs-12 col-sm-6 col-md-2">
-                    <a href="#"><img src="images/item-5.png" class="img-responsive center-block"></a>
-                    <h4 class="text-center">MAJICA FOTO</h4>
-                    <h5 class="text-center">400.000 VND</h5>
-                  </div>
-                </div>
-       
-                <div class="item">
-                  <div class="col-xs-12 col-sm-6 col-md-2">
-                    <a href="#"><img src="images/item-1.png" class="img-responsive center-block"></a>
-                    <h4 class="text-center">MAJICA MAYORAL</h4>
-                    <h5 class="text-center">400.000 VND</h5>
-                  </div>
-                </div>
-       
-              </div>
-      <!-- left,right control -->
-              <div id="slider-control">
-              <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="arrow_left.png" alt="Left" class="img-responsive"></a>
-              <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="arrow_right.png" alt="Right" class="img-responsive"></a>
-            </div>
-            </div>
-          </div>
+<html>
+  <head>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col justify-center text-center">
+      <!-- Make sure the following div id (OTPInput) is the same in the Javascipt -->
+      <form action="#" method="post">
+        <!-- This is the div where the otp fields are generated by Javascript -->
+        <div class="flex justify-center " id="OTPInput">
         </div>
-      </div>
-       
-      <script type="text/javascript">
-        $(document).ready(function(){
-       
-      $('#itemslider').carousel({ interval: 3000 });
-       
-      $('.carousel-showmanymoveone .item').each(function(){
-      var itemToClone = $(this);
-       
-      for (var i=1;i<6;i++) {
-      itemToClone = itemToClone.next();
-       
-      if (!itemToClone.length) {
-      itemToClone = $(this).siblings(':first');
+        <!-- Change this name attribute to mach your form submission parameters. Make sure you update the id in the javascript code if any changes are made to the id attribute -->
+        <input hidden id="otp" name="otp" value="">
+        <button class="mt-10 button button-primary font-bold text-lg px-6 pt-3 pb-3 rounded bg-black text-white" id="otpSubmit">Submit
+        </button>
+      </form>
+    </div>
+    <script>
+    /* This creates all the OTP input fields dynamically. Change the otp_length variable  to change the OTP Length */
+const $otp_length = 6;
+
+const element = document.getElementById('OTPInput');
+for (let i = 0; i < $otp_length; i++) {
+  let inputField = document.createElement('input'); // Creates a new input element
+  inputField.className = "w-12 h-12 bg-gray-100 border-gray-100 outline-none focus:bg-gray-200 m-2 text-center rounded focus:border-blue-400 focus:shadow-outline";
+  // Do individual OTP input styling here;
+  inputField.style.cssText = "color: transparent; text-shadow: 0 0 0 gray;"; // Input field text styling. This css hides the text caret
+  inputField.id = 'otp-field' + i; // Don't remove
+  inputField.maxLength = 1; // Sets individual field length to 1 char
+  element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
+}
+
+/*  This is for switching back and forth the input box for user experience */
+const inputs = document.querySelectorAll('#OTPInput > *[id]');
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener('keydown', function(event) {
+    if (event.key === "Backspace") {
+
+      if (inputs[i].value == '') {
+        if (i != 0) {
+          inputs[i - 1].focus();
+        }
+      } else {
+        inputs[i].value = '';
       }
-       
-      itemToClone.children(':first-child').clone()
-      .addClass("cloneditem-"+(i))
-      .appendTo($(this));
-      }
-      });
-      });
-       
-        </script>
-       
-</body>
+
+    } else if (event.key === "ArrowLeft" && i !== 0) {
+      inputs[i - 1].focus();
+    } else if (event.key === "ArrowRight" && i !== inputs.length - 1) {
+      inputs[i + 1].focus();
+    } else if (event.key != "ArrowLeft" && event.key != "ArrowRight") {
+      inputs[i].setAttribute("type", "text");
+      inputs[i].value = ''; // Bug Fix: allow user to change a random otp digit after pressing it
+      setTimeout(function() {
+        inputs[i].setAttribute("type", "password");
+      }, 1000); // Hides the text after 1 sec
+    }
+  });
+  inputs[i].addEventListener('input', function() {
+    inputs[i].value = inputs[i].value.toUpperCase(); // Converts to Upper case. Remove .toUpperCase() if conversion isnt required.
+    if (i === inputs.length - 1 && inputs[i].value !== '') {
+      return true;
+    } else if (inputs[i].value !== '') {
+      inputs[i + 1].focus();
+    }
+  });
+
+}
+/*  This is to get the value on pressing the submit button
+  *   In this example, I used a hidden input box to store the otp after compiling data from each input fields
+  *   This hidden input will have a name attribute and all other single character fields won't have a name attribute
+  *   This is to ensure that only this hidden input field will be submitted when you submit the form */
+
+document.getElementById('otpSubmit').addEventListener("click", function() {
+  const inputs = document.querySelectorAll('#OTPInput > *[id]');
+  let compiledOtp = '';
+  for (let i = 0; i < inputs.length; i++) {
+    compiledOtp += inputs[i].value;
+  }
+  document.getElementById('otp').value = compiledOtp;
+  return true;
+});
+    </script>
+  </body>
 </html>

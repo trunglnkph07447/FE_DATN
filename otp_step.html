@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="css/css/otp.css">
    
@@ -14,23 +15,27 @@
     <div class="container">
         <div class="form-step">
             <div class="line"></div>
-            <span>Step1</span>
-            <span>Step2</span>
-            <span>Step3</span>
+            <span>Bước 1</span>
+            <span>Bước 2</span>
+            <span>Bước 3</span>
         </div>
         <form action="" class="form-one">
-            <h1>ĐĂNG NHẬP</h1>
+            <h1 style="font-weight: bold;">ĐĂNG NHẬP</h1>
             <div class="form_text">
                 <p>Vui lòng nhập số điện thoại của anh</p>
             </div>
             <div class="input_tel">
                 <input type="tel" placeholder="Ví dụ: 0912.xxx.xxx">
             </div>
-            <button type="button" id="next-one">Next</button>
+            <button type="button" id="next-one">Tiếp tục</button>
         </form>
 
-        <form action="" class="form-two">
-            <h1>CONTACT</h1>
+        <div class="min-h-screen flex flex-col justify-center text-center">
+        <form action="" method="post" class="form-two">
+            <h1 style="font-weight: bold;">NHẬP MÃ XÁC NHẬN</h1>
+            <div class="form_text">
+                <p style="text-align: center;">Anh nhập mã xác nhận (6 chữ số) được gửi đến SĐT 091x.xxx.xxx để hoàn tất</p>
+            </div>
             <!-- <input type="email" placeholder="Email">
             <input type="number" placeholder="SĐT">
             <button type="button" id="back-one">Back</button>
@@ -40,17 +45,20 @@
                     <div class="form__message">Kiểm tra SMS để lấy OTP đăng nhập.</div>
                     <div><span class="sendOTP__resend " role="presentation">Gửi lại OTP</span></div>
                 </div> -->
-            
-            <button type="button" id="back-one">Back</button>
-            <button  type="button" id="next-two">Next</button>
+                <div class="flex justify-center " id="OTPInput">
+                </div>
+                <!-- Change this name attribute to mach your form submission parameters. Make sure you update the id in the javascript code if any changes are made to the id attribute -->
+                <input hidden id="otp" name="otp" value="">
+            <button type="button" id="back-one">Quay lại</button>
+            <button  type="button" id="next-two">Tiếp tục</button>
         </form>
-
+        </div>
         <form action="" class="form-three">
-            <h1>Submit</h1>
-            <input type="text" placeholder="Họ tên">
+            <h1 style="font-weight: bold;">THÔNG TIN</h1>
+            <input type="text" placeholder="Họ">
             <input type="text" placeholder="Tên">
-            <button type="button" id="back-two">Back</button>
-            <button>Submit</button>
+            <button type="button" id="back-two">Quay lại</button>
+            <button id="otpSubmit" >Hoàn tất</button>
         </form>
 
     </div>
@@ -91,6 +99,77 @@
             formLine.style.width = "200px"
         })
 
+    </script>
+
+<script>
+    /* This creates all the OTP input fields dynamically. Change the otp_length variable  to change the OTP Length */
+const $otp_length = 6;
+
+const element = document.getElementById('OTPInput');
+for (let i = 0; i < $otp_length; i++) {
+  let inputField = document.createElement('input'); // Creates a new input element
+  inputField.className = "w-12 h-12 bg-gray-100 border-gray-100 outline-none focus:bg-gray-200 m-2 text-center rounded focus:border-blue-400 focus:shadow-outline";
+  // Do individual OTP input styling here;
+  inputField.style.cssText = "color: transparent; text-shadow: 0 0 0 gray;"; // Input field text styling. This css hides the text caret
+  inputField.id = 'otp-field' + i; // Don't remove
+  inputField.maxLength = 1; // Sets individual field length to 1 char
+  element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
+}
+
+/*  This is for switching back and forth the input box for user experience */
+const inputs = document.querySelectorAll('#OTPInput > *[id]');
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener('keydown', function(event) {
+    if (event.key === "Backspace") {
+
+      if (inputs[i].value == '') {
+        if (i != 0) {
+          inputs[i - 1].focus();
+        }
+      } else {
+        inputs[i].value = '';
+      } 
+      
+      } else if (event.key === "Enter") {
+                    document.getElementById('otpSubmit').click();
+                    return false;
+
+    } else if (event.key === "ArrowLeft" && i !== 0) {
+      inputs[i - 1].focus();
+    } else if (event.key === "ArrowRight" && i !== inputs.length - 1) {
+      inputs[i + 1].focus();
+    } else if (event.key != "ArrowLeft" && event.key != "ArrowRight") {
+      inputs[i].setAttribute("type", "text");
+      inputs[i].value = ''; // Bug Fix: allow user to change a random otp digit after pressing it
+      setTimeout(function() {
+        inputs[i].setAttribute("type", "password");
+      }, 1000); // Hides the text after 1 sec
+    }
+  });
+  inputs[i].addEventListener('input', function() {
+    inputs[i].value = inputs[i].value.toUpperCase(); // Converts to Upper case. Remove .toUpperCase() if conversion isnt required.
+    if (i === inputs.length - 1 && inputs[i].value !== '') {
+      return true;
+    } else if (inputs[i].value !== '') {
+      inputs[i + 1].focus();
+    }
+  });
+
+}
+/*  This is to get the value on pressing the submit button
+  *   In this example, I used a hidden input box to store the otp after compiling data from each input fields
+  *   This hidden input will have a name attribute and all other single character fields won't have a name attribute
+  *   This is to ensure that only this hidden input field will be submitted when you submit the form */
+
+document.getElementById('otpSubmit').addEventListener("click", function() {
+  const inputs = document.querySelectorAll('#OTPInput > *[id]');
+  let compiledOtp = '';
+  for (let i = 0; i < inputs.length; i++) {
+    compiledOtp += inputs[i].value;
+  }
+  document.getElementById('otp').value = compiledOtp;
+  return true;
+});
     </script>
 </body>
 
